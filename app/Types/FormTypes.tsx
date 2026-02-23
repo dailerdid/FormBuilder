@@ -9,9 +9,11 @@ export type BaseField = {
 export type Form = {
   id: string,
   title: string,
-  fields: BaseField[]
+  fields: FieldsType[],
+  editing: null | string
 }
 
+export type FieldsType = TextField | SelectField | CheckField
 
 export type TextField = BaseField & {
   type: 'text' | 'email' | 'password';
@@ -19,11 +21,13 @@ export type TextField = BaseField & {
 }
 
 export type SelectField = BaseField & {
+  label: string;
   type: 'select';
-  options: { label: string; value: string }[]
+  options: { id: string; label: string; value: string }[]
 }
 
-export type ToggleField = BaseField & {
-  type: 'toggle';
+export type CheckField = BaseField & {
+  type: 'check';
+  label: string;
   defaultChecked: boolean;
 }
