@@ -1,5 +1,5 @@
-import { FormElement } from "@/app/Types/ElementTypes";
-import { TextField } from "@/app/Types/FormTypes";
+import { FormElement } from "../builder-types/element-types"
+import { TextField } from "../builder-types/form-types"
 
 
 export const TextElement: FormElement<TextField> = {

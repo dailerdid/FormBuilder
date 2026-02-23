@@ -1,5 +1,5 @@
-import { FormElement } from "@/app/Types/ElementTypes";
-import { CheckField } from "@/app/Types/FormTypes";
+import { FormElement } from "../builder-types/element-types"
+import { CheckField } from "../builder-types/form-types"
 
 
 export const CheckElement: FormElement<CheckField> = {

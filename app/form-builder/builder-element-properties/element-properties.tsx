@@ -1,7 +1,7 @@
+import { registry } from "@/app/registry"
 import { useDispatch, useSelector } from "react-redux"
-import { editFiled, StoreState } from "../FormStore/FormStore"
-import { registry } from "../registry"
-import { OptionsCreator } from "../FormElements/OptionsCreator"
+import { editFiled, StoreState } from "../builder-store/store"
+import { OptionsCreator } from "../components/options-creator"
 
 
 export const ElementProperties = () => {

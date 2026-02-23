@@ -1,4 +1,4 @@
-import { BaseField } from "./FormTypes";
+import { BaseField } from "./form-types";
 
 
 

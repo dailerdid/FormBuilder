@@ -1,8 +1,8 @@
 'use client'
 
 import { useDispatch, useSelector } from "react-redux"
-import { editButton, removeField, StoreState } from "../FormStore/FormStore"
-import { registry } from "../registry"
+import { editButton, removeField, StoreState } from "../builder-store/store"
+import { registry } from "@/app/registry"
 
 
 export const Renderer = () => {

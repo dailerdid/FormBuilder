@@ -1,5 +1,5 @@
-import { FormElement } from "@/app/Types/ElementTypes"
-import { SelectField } from "@/app/Types/FormTypes"
+import { FormElement } from "../builder-types/element-types"
+import { SelectField } from "../builder-types/form-types"
 
 
 export const SelectElement: FormElement<SelectField> = {

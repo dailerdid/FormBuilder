@@ -1,9 +1,9 @@
+import { registry } from "@/app/registry"
 import { useDispatch } from "react-redux"
-import { registry } from "../registry"
-import { addField } from "../FormStore/FormStore"
+import { addField } from "../builder-store/store"
 
 
-export const Elements = () => {
+export const ElementsList = () => {
 
     const dispatch = useDispatch()
 

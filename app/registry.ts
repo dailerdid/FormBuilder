@@ -1,7 +1,7 @@
+import { CheckElement } from "./form-builder/builder-elements/check-element"
+import { SelectElement } from "./form-builder/builder-elements/select-element"
+import { TextElement } from "./form-builder/builder-elements/text-element"
 
-import { CheckElement } from "./FormElements/Elemets/CheckElement";
-import { SelectElement } from "./FormElements/Elemets/SelectElement";
-import { TextElement } from "./FormElements/Elemets/TextElement";
 
 
 type elementsType = typeof SelectElement | typeof TextElement | typeof CheckElement
