@@ -10,19 +10,22 @@ export const TextElement: FormElement<TextField> = {
         type: 'text',
         name: `text_${id}`,
         validation: [],
-        placeholder: 'ya v ahue'
+        placeholder: 'Type something...'
     }),
 
     component: (field, value, onChange) => {
         return (
-            <input onChange={onChange} placeholder={field.placeholder} value={value}></input>
+            <div>
+                <p>{value}</p>
+                <input onChange={onChange} placeholder={field.placeholder}></input>
+            </div>
         )
     },
     properties: [
         {
-            key: 'name',
-            label: 'width',
-            type: 'text'
+            key: 'placeholder',
+            label: 'Placeholder',
+            type: 'text',
         },
     ]
 }

@@ -8,6 +8,7 @@ const formInitialState: Form = {
     title: 'initialForm',
     fields: [],
     editing: null,
+    necessarily: [],
 }
 
 export const FormSlice = createSlice({
@@ -35,6 +36,13 @@ export const FormSlice = createSlice({
         },
         editButton: (state: Form, action: PayloadAction<FieldsType>) => {
             return { ...state, editing: action.payload.id }
+        },
+        editNecessarily: (state: Form, action: PayloadAction<FieldsType>) => {
+            const add = { ...state, necessarily: [...state.necessarily, action.payload] }
+            const remove = state.necessarily.filter(item => item !== action.payload.id)
+            const newRemoved = { ...state, necessarily: remove }
+            const check = state.necessarily.includes(action.payload.id)
+            return check ? newRemoved : add
         }
     }
 })

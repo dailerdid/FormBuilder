@@ -37,8 +37,11 @@ export const ElementProperties = () => {
                 }
                 if (properties.type === 'check') {
                     return <div>
-                        <label>{properties.label}</label>
-                        <input type="checkbox"></input>
+                        <p>Check Label</p>
+                        <input onChange={(event) => {
+                            const value = event.target.value
+                            dispatch(editFiled({ key: properties.key, value }))
+                        }} placeholder={properties.label}></input>
                     </div>
                 }
                 if (properties.type === 'options-control') {

@@ -9,15 +9,15 @@ export const CheckElement: FormElement<CheckField> = {
         id: id,
         type: 'check',
         name: `check_${id}`,
-        label: '',
+        label: 'Check',
         defaultChecked: false,
         validation: [],
     }),
 
     component: (field, value, onChange) => {
         return (
-            <div>
-                <label>{value}</label>
+            <div className="text-background">
+                <p>{field.label}</p>
                 <input type="checkbox"></input>
             </div>
         )
@@ -25,7 +25,7 @@ export const CheckElement: FormElement<CheckField> = {
     properties: [
         {
             key: 'label',
-            label: 'width',
+            label: 'Type somtnig...',
             type: 'check',
         }
     ]

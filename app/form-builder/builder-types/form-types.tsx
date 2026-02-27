@@ -10,7 +10,8 @@ export type Form = {
   id: string,
   title: string,
   fields: FieldsType[],
-  editing: null | string
+  editing: null | string,
+  necessarily: string[],
 }
 
 export type FieldsType = TextField | SelectField | CheckField
