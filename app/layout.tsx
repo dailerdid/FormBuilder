@@ -2,6 +2,9 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Provider } from "react-redux";
+import { store, persistor } from "./form-builder/builder-store/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,9 +25,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        {children}
-      </body>
+      <Provider store={store}>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <PersistGate loading={null} persistor={persistor}>
+            {children}
+          </PersistGate>
+        </body>
+      </Provider>
+
     </html>
   );
 }

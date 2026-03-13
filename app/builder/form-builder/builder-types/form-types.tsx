@@ -1,12 +1,9 @@
-import { ValidationConfig } from "../builder-validation-rules/validation-types";
-
-export type FieldType = 'text' | 'select' | 'check' | 'email' | 'password'
 
 export type BaseField = {
   id: string;
-  type: FieldType;
+  type: string;
   name: string;
-  validation: ValidationConfig[]
+  validation: {}[];
 }
 
 export type Form = {
@@ -18,9 +15,7 @@ export type Form = {
 
 export type FormState = {
   forms: Record<string, Form>,
-  submitData: {
-    [id: string]: { [key: string]: any }[]
-  }
+  activeFormId: string
 }
 
 export type FieldsType = TextField | SelectField | CheckField | EmailField | PasswordField

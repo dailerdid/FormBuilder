@@ -1,18 +1,22 @@
 import { FormElement, normalizeElementInputProps } from "../builder-types/element-types"
-import { TextField } from "../builder-types/form-types"
+import { EmailField } from "../builder-types/form-types"
+import { maxLengthRule } from "../builder-validation-rules/validation-maxLen"
+import { maxValueRule } from "../builder-validation-rules/validation-maxVal"
+import { minLengthRule } from "../builder-validation-rules/validation-minLen"
+import { minValueRule } from "../builder-validation-rules/validation-minVal"
 import { requiredRule } from "../builder-validation-rules/validation-required"
 
 
-export const TextElement: FormElement<TextField> = {
-    type: 'text',
+export const EmailElement: FormElement<EmailField> = {
+    type: 'email',
 
     construct: (id) => ({
         id: id,
-        type: 'text',
-        name: `text_${id}`,
-        label: 'Text Field',
+        type: 'email',
+        name: `email_${id}`,
+        label: 'Email Address',
         validation: [],
-        placeholder: 'Type something...'
+        placeholder: 'Entering email...'
     }),
 
     component: (field, inputProps, onChange) => {
@@ -25,7 +29,7 @@ export const TextElement: FormElement<TextField> = {
                 </label>
                 <input
                     {...registerProps}
-                    type="text"
+                    type="email"
                     value={typeof value === 'string' ? value : undefined}
                     className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                     placeholder={field.placeholder}
@@ -45,6 +49,5 @@ export const TextElement: FormElement<TextField> = {
             type: 'text',
         },
     ],
-    validation: [requiredRule]
+    validation: [requiredRule, minLengthRule, maxLengthRule]
 }
-

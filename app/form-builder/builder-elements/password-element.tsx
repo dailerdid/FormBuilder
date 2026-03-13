@@ -1,18 +1,18 @@
 import { FormElement, normalizeElementInputProps } from "../builder-types/element-types"
-import { SelectField } from "../builder-types/form-types"
+import { PasswordField } from "../builder-types/form-types"
 import { requiredRule } from "../builder-validation-rules/validation-required"
 
 
-export const SelectElement: FormElement<SelectField> = {
-    type: 'select',
+export const PasswordElement: FormElement<PasswordField> = {
+    type: 'password',
 
     construct: (id) => ({
         id: id,
-        label: 'Choose',
-        type: 'select',
-        name: `select_${id}`,
+        type: 'password',
+        name: `password_${id}`,
+        label: 'Password',
         validation: [],
-        options: []
+        placeholder: 'password'
     }),
 
     component: (field, inputProps, onChange) => {
@@ -23,14 +23,13 @@ export const SelectElement: FormElement<SelectField> = {
                 <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-foreground">
                     {field.label}
                 </label>
-                <select
+                <input
                     {...registerProps}
-                    className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    type="password"
                     value={typeof value === 'string' ? value : undefined}
-                >
-                    <option value="" disabled>Select an option</option>
-                    {field.options?.map((e) => <option key={e.value} value={e.value}>{e.label}</option>)}
-                </select>
+                    className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    placeholder={field.placeholder}
+                />
             </div>
         )
     },
@@ -38,15 +37,14 @@ export const SelectElement: FormElement<SelectField> = {
     properties: [
         {
             key: 'label',
-            type: 'text',
             label: 'Label',
+            type: 'text',
         },
         {
-            key: 'options',
-            label: 'Options',
-            type: 'options-control',
-            value: ''
-        }
+            key: 'placeholder',
+            label: 'Placeholder',
+            type: 'text',
+        },
     ],
     validation: [requiredRule]
 }

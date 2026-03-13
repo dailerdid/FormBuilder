@@ -1,5 +1,6 @@
 'use client'
 
+import { Dashboard } from "./form-builder/Dashboard";
 import { FormBuilder } from "./form-builder/FormBuilder";
 
 
@@ -7,8 +8,8 @@ export default function Home() {
 
 
   return (
-    <div className="flex gap-5 pt-10 items-center">
-      <FormBuilder />
-    </div >
+    <div className="w-full h-screen overflow-hidden">
+      <Dashboard />
+    </div>
   );
 }
