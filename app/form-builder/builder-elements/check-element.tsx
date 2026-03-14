@@ -1,5 +1,6 @@
 import { FormElement, normalizeElementInputProps } from "../builder-types/element-types"
 import { CheckField } from "../builder-types/form-types"
+import { mustBeTrueRule } from "../builder-validation-rules/validation-mustBeTrue"
 import { requiredRule } from "../builder-validation-rules/validation-required"
 
 
@@ -48,5 +49,5 @@ export const CheckElement: FormElement<CheckField> = {
             type: 'text',
         }
     ],
-    validation: [requiredRule]
+    validation: [requiredRule, mustBeTrueRule]
 }

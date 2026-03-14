@@ -12,32 +12,28 @@ export const OptionsCreator = ({ options, onChange }: OptionsType) => {
 
     const [optionsList, setOptionsList] = useState(options ? options : [])
 
-    useEffect(() => {
-        onChange(optionsList)
-    }, [optionsList])
-
-
     const deleteOpt = (id: string) => {
-        setOptionsList(optionsList.filter(e => e.id !== id))
-        onChange(optionsList)
+        const newList = optionsList.filter(e => e.id !== id)
+        setOptionsList(newList)
+        onChange(newList)
     }
 
     const createOpt = () => {
-
-        setOptionsList((e) => {
-            const opt = { id: Math.random().toString(), label: `Option ${optionsList.length + 1} `, value: `option${optionsList.length + 1}` }
-            return [...e, opt]
-        })
-        onChange(optionsList)
+        const opt = { id: Math.random().toString(), label: `Option ${optionsList.length + 1} `, value: `option${optionsList.length + 1}` }
+        const newList = [...optionsList, opt]
+        setOptionsList(newList)
+        onChange(newList)
     }
+
     const changes = (id: string, type: "label" | "value", event: string) => {
-        setOptionsList(optionsList.map((e) => {
+        const newList = optionsList.map((e) => {
             if (id === e.id) {
                 return { ...e, [type]: event }
             }
             return e
-        }))
-        onChange(optionsList)
+        })
+        setOptionsList(newList)
+        onChange(newList)
     }
 
     return (

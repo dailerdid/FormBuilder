@@ -17,7 +17,7 @@ export const minLengthRule: Validation = {
     type: "minLength"
   }),
   fields: [
-    { type: 'number', key: 'value' },
-    { type: 'text', key: 'errorMessage' }
+    { type: 'number', key: 'value', label: 'Minimum Length' },
+    { type: 'text', key: 'errorMessage', label: 'Error Message' }
   ]
 }

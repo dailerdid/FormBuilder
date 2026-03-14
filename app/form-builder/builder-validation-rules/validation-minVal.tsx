@@ -18,7 +18,7 @@ export const minValueRule: Validation = {
     type: "minValue"
   }),
   fields: [
-    { type: 'number', key: 'value' },
-    { type: 'text', key: 'errorMessage' }
+    { type: 'number', key: 'value', label: 'Minimum Value' },
+    { type: 'text', key: 'errorMessage', label: 'Error Message' }
   ]
 }

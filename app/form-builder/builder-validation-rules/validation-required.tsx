@@ -4,11 +4,19 @@ export const requiredRule: Validation = {
   label: 'required field',
   type: "required",
   validate: (value) => {
+    if (typeof FileList !== 'undefined' && value instanceof FileList) {
+      return value.length > 0
+    }
+
     if (typeof value === 'boolean') {
       return value
     }
 
     if (Array.isArray(value)) {
+      return value.length > 0
+    }
+
+    if (typeof value === 'object' && value !== null && 'length' in value && typeof value.length === 'number') {
       return value.length > 0
     }
 
@@ -31,6 +39,6 @@ export const requiredRule: Validation = {
     type: "required"
   }),
   fields: [
-    { type: 'text', key: 'errorMessage' }
+    { type: 'text', key: 'errorMessage', label: 'Error Message' }
   ]
 }

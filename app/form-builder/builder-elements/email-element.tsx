@@ -1,9 +1,9 @@
 import { FormElement, normalizeElementInputProps } from "../builder-types/element-types"
 import { EmailField } from "../builder-types/form-types"
+import { emailFormatRule } from "../builder-validation-rules/validation-emailFormat"
 import { maxLengthRule } from "../builder-validation-rules/validation-maxLen"
-import { maxValueRule } from "../builder-validation-rules/validation-maxVal"
 import { minLengthRule } from "../builder-validation-rules/validation-minLen"
-import { minValueRule } from "../builder-validation-rules/validation-minVal"
+import { patternRule } from "../builder-validation-rules/validation-pattern"
 import { requiredRule } from "../builder-validation-rules/validation-required"
 
 
@@ -49,5 +49,5 @@ export const EmailElement: FormElement<EmailField> = {
             type: 'text',
         },
     ],
-    validation: [requiredRule, minLengthRule, maxLengthRule]
+    validation: [requiredRule, minLengthRule, maxLengthRule, emailFormatRule, patternRule]
 }

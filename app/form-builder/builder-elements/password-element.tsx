@@ -1,5 +1,9 @@
 import { FormElement, normalizeElementInputProps } from "../builder-types/element-types"
 import { PasswordField } from "../builder-types/form-types"
+import { maxLengthRule } from "../builder-validation-rules/validation-maxLen"
+import { minLengthRule } from "../builder-validation-rules/validation-minLen"
+import { notEqualRule } from "../builder-validation-rules/validation-notEqual"
+import { patternRule } from "../builder-validation-rules/validation-pattern"
 import { requiredRule } from "../builder-validation-rules/validation-required"
 
 
@@ -46,5 +50,5 @@ export const PasswordElement: FormElement<PasswordField> = {
             type: 'text',
         },
     ],
-    validation: [requiredRule]
+    validation: [requiredRule, minLengthRule, maxLengthRule, patternRule, notEqualRule]
 }

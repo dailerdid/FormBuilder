@@ -17,7 +17,7 @@ export const maxLengthRule: Validation = {
     type: "maxLength"
   }),
   fields: [
-    { type: 'number', key: 'value' },
-    { type: 'text', key: 'errorMessage' }
+    { type: 'number', key: 'value', label: 'Maximum Length' },
+    { type: 'text', key: 'errorMessage', label: 'Error Message' }
   ]
 }

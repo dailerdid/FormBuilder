@@ -1,5 +1,10 @@
 import { FormElement, normalizeElementInputProps } from "../builder-types/element-types"
 import { TextField } from "../builder-types/form-types"
+import { maxLengthRule } from "../builder-validation-rules/validation-maxLen"
+import { minLengthRule } from "../builder-validation-rules/validation-minLen"
+import { notEqualRule } from "../builder-validation-rules/validation-notEqual"
+import { oneOfRule } from "../builder-validation-rules/validation-oneOf"
+import { patternRule } from "../builder-validation-rules/validation-pattern"
 import { requiredRule } from "../builder-validation-rules/validation-required"
 
 
@@ -45,6 +50,6 @@ export const TextElement: FormElement<TextField> = {
             type: 'text',
         },
     ],
-    validation: [requiredRule]
+    validation: [requiredRule, minLengthRule, maxLengthRule, patternRule, notEqualRule, oneOfRule]
 }
 

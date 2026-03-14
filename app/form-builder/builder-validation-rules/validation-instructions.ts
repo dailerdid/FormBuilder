@@ -1,0 +1,27 @@
+import { ValidationTypes } from "./validation-types";
+
+export const validationInstructions: Record<ValidationTypes, string> = {
+    required: 'This field cannot be empty. Enter only the error message.',
+    mustBeTrue: 'The user must explicitly enable or confirm this field. Enter the error message.',
+    minLength: 'Enter the minimum number of characters and the error message.',
+    maxLength: 'Enter the maximum number of characters and the error message.',
+    pattern: 'Enter a regular expression to validate the value and the error message.',
+    emailFormat: 'Checks whether the value is a valid email address. Only the error message is required.',
+    urlFormat: 'Checks whether the value is a valid URL. Only the error message is required.',
+    phoneFormat: 'Checks whether the value matches a phone number format. Only the error message is required.',
+    minValue: 'Enter the minimum allowed number and the error message.',
+    maxValue: 'Enter the maximum allowed number and the error message.',
+    integerOnly: 'Allows only whole numbers. Only the error message is required.',
+    positiveOnly: 'Allows only positive values. Only the error message is required.',
+    dateMin: 'Enter the earliest allowed date in YYYY-MM-DD format and the error message.',
+    dateMax: 'Enter the latest allowed date in YYYY-MM-DD format and the error message.',
+    dateRange: 'Enter the start and end date in YYYY-MM-DD format, then add the error message.',
+    fileMaxSize: 'Enter the maximum file size in bytes and the error message.',
+    fileMinSize: 'Enter the minimum file size in bytes and the error message.',
+    fileType: 'List the allowed file types separated by commas, for example .pdf,image/*, then add the error message.',
+    fileCountMax: 'Enter the maximum number of uploaded files and the error message.',
+    minSelected: 'Enter the minimum number of selected values and the error message.',
+    maxSelected: 'Enter the maximum number of selected values and the error message.',
+    notEqual: 'Enter a value that is not allowed and the error message.',
+    oneOf: 'List the allowed values separated by commas and add the error message.',
+}

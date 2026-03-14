@@ -18,7 +18,7 @@ export const maxValueRule: Validation = {
     type: "maxValue"
   }),
   fields: [
-    { type: 'number', key: 'value' },
-    { type: 'text', key: 'errorMessage' }
+    { type: 'number', key: 'value', label: 'Maximum Value' },
+    { type: 'text', key: 'errorMessage', label: 'Error Message' }
   ]
 }

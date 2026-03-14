@@ -1,5 +1,8 @@
+import { SelectLogic } from "@/app/form-builder/components/select-logic"
 import { FormElement, normalizeElementInputProps } from "../builder-types/element-types"
 import { SelectField } from "../builder-types/form-types"
+import { notEqualRule } from "../builder-validation-rules/validation-notEqual"
+import { oneOfRule } from "../builder-validation-rules/validation-oneOf"
 import { requiredRule } from "../builder-validation-rules/validation-required"
 
 
@@ -23,14 +26,13 @@ export const SelectElement: FormElement<SelectField> = {
                 <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-foreground">
                     {field.label}
                 </label>
-                <select
-                    {...registerProps}
-                    className="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                    value={typeof value === 'string' ? value : undefined}
-                >
-                    <option value="" disabled>Select an option</option>
-                    {field.options?.map((e) => <option key={e.value} value={e.value}>{e.label}</option>)}
-                </select>
+                <SelectLogic
+                    options={field.options}
+                    value={value}
+                    inputProps={registerProps}
+                    defaultValue=""
+                    placeholder="Select an option"
+                />
             </div>
         )
     },
@@ -48,5 +50,5 @@ export const SelectElement: FormElement<SelectField> = {
             value: ''
         }
     ],
-    validation: [requiredRule]
+    validation: [requiredRule, oneOfRule, notEqualRule]
 }
