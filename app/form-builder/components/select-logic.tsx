@@ -30,7 +30,7 @@ const getResolvedValue = (value: unknown, fallbackValue: string) => typeof value
 
 const getSelectedLabel = (options: SelectLogicOption[], selectedValue: string, placeholder: string) => options.find((option) => option.value === selectedValue)?.label ?? placeholder
 
-const getChevronClassName = (isOpen: boolean) => [
+export const getChevronClassName = (isOpen: boolean) => [
     'shrink-0 origin-center transition-transform duration-200',
     isOpen ? 'rotate-180' : 'rotate-0'
 ].join(' ')

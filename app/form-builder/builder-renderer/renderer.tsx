@@ -30,9 +30,9 @@ export const SortableField = ({ e, id, isEditing }: { e: any, id: string, isEdit
             ref={setNodeRef}
             style={style}
             onClick={() => dispatch(editButton({ data: e, formId: id }))}
-            className={`group relative flex items-start p-4 -mx-4 rounded-lg transition-all cursor-pointer border border-transparent ${isEditing
-                ? "bg-muted border-border ring-1 ring-ring shadow-sm"
-                : "hover:bg-muted/50 hover:border-border"
+            className={`group relative flex items-start p-4 -mx-4 rounded-xl transition-all duration-150 cursor-pointer border ${isEditing
+                ? "bg-primary/5 border-primary/20 shadow-sm"
+                : "border-transparent hover:bg-muted/50 hover:border-border"
                 } ${isDragging ? "opacity-50" : ""}`}
         >
             <div 
@@ -47,7 +47,7 @@ export const SortableField = ({ e, id, isEditing }: { e: any, id: string, isEdit
             </div>
             <div className={`absolute right-2 top-2 flex items-center gap-1 opacity-0 transition-opacity ${isEditing ? 'opacity-100' : 'group-hover:opacity-100'}`}>
                 <button
-                    className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring hover:bg-background hover:text-foreground h-7 w-7 text-muted-foreground shadow-sm border border-transparent hover:border-border"
+                    className="inline-flex items-center justify-center rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring hover:bg-destructive/10 hover:text-destructive h-7 w-7 text-muted-foreground border border-transparent hover:border-destructive/20"
                     onClick={(event) => {
                         event.stopPropagation();
                         dispatch(removeField({ data: e, formId: id }));
@@ -73,7 +73,7 @@ export const GhostDroppable = ({ e, index }: { e: any, index: number }) => {
     return (
         <div
             ref={setNodeRef}
-            className="group relative flex items-start p-4 -mx-4 rounded-lg bg-primary/10 border border-primary/50 border-dashed opacity-70 transition-all pointer-events-none"
+            className="group relative flex items-start p-4 -mx-4 rounded-xl bg-primary/5 border-2 border-primary/30 border-dashed opacity-70 transition-all pointer-events-none"
         >
             <div className="flex-1">
                 {registry[e.type] ? registry[e.type].component(e, '', () => { }) : `Unknown`}
@@ -138,15 +138,15 @@ export const Renderer = () => {
     return (
         <main 
             ref={setNodeRef}
-            className="flex-1 bg-muted/30 overflow-y-auto flex justify-center relative transition-colors duration-200"
+            className="flex-1 bg-muted/40 overflow-y-auto flex justify-center relative"
         >
 
-            <div className="absolute inset-0 bg-[radial-gradient(var(--color-border)_1px,transparent_1px)] [background-size:16px_16px] opacity-50 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(var(--color-border)_1px,transparent_1px)] [background-size:20px_20px] opacity-40 pointer-events-none"></div>
 
-            <div className="w-full max-w-3xl bg-background border-x border-border shadow-sm min-h-full flex flex-col relative z-10 transition-colors duration-200">
+            <div className="w-full max-w-3xl bg-card border-x border-border shadow-sm min-h-full flex flex-col relative z-10">
 
-                <div className="p-8 border-b border-border/50">
-                    <h2 className="text-2xl font-semibold tracking-tight text-foreground">Untitled Form</h2>
+                <div className="p-8 border-b border-border">
+                    <h2 className="text-xl font-semibold tracking-tight text-foreground">Untitled Form</h2>
                     <p className="text-sm text-muted-foreground mt-1">Please fill out the fields below.</p>
                 </div>
 
