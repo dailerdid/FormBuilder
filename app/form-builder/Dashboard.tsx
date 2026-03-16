@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
 import { addForm, removeForm, StoreState } from "./builder-store/store"
-import { ChangeEventHandler, useState } from "react"
+import { ChangeEventHandler, ReactElement, useState } from "react"
 import Link from "next/link"
 import { useBuilder } from "./form-builder-context/builder-context"
 import { registry } from "../registry"
+import { FieldsType } from "./builder-types/form-types"
 
 
 export const Dashboard = () => {
@@ -91,7 +92,7 @@ export const Dashboard = () => {
 
           {forms.length === 0 && (
             <div className="flex flex-col items-center justify-center py-12 text-muted-foreground text-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-2 opacity-50"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-2 opacity-50"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M3 9h18" /><path d="M9 21V9" /></svg>
               <p>No forms created yet.</p>
             </div>
           )}
@@ -112,30 +113,30 @@ export const Dashboard = () => {
                   </div>
                   <div className="flex gap-2">
                     <Link href={`/builder/${preview}`} className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-border bg-background hover:bg-muted hover:text-foreground h-9 px-4 py-2 shadow-sm gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/><path d="m15 5 3 3"/></svg>
-                      Edit 
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 20h9" /><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z" /><path d="m15 5 3 3" /></svg>
+                      Edit
                     </Link>
                     <Link href={`/data/${preview}`} className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-border bg-background hover:bg-muted hover:text-foreground h-9 px-4 py-2 shadow-sm gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5V19A9 3 0 0 0 21 19V5" /><path d="M3 12A9 3 0 0 0 21 12" /></svg>
                       Responses
                     </Link>
                     <Link href={`/form/${preview}`} className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-border bg-background hover:bg-muted hover:text-foreground h-9 px-4 py-2 shadow-sm gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><polyline points="15 3 21 3 21 9" /><line x1="10" y1="14" x2="21" y2="3" /></svg>
                       Open Form
                     </Link>
                   </div>
                 </div>
               </div>
-              
+
               <div className="p-8 flex-1 flex flex-col gap-6 w-full">
                 {activeForm?.fields && activeForm.fields.length > 0 ? (
                   <div className="space-y-6 pointer-events-none opacity-60 grayscale-[0.2] select-none transition-all">
-                    {activeForm.fields.map((e: any) => (
+                    {activeForm.fields.map((e: FieldsType) => (
                       <div key={e.id} className="relative">
-                          {registry[e.type]
-                            ? registry[e.type].component(e, '', () => { })
-                            : <div className="p-4 bg-destructive/10 text-destructive rounded border border-destructive/20 text-sm">Unknown element: {e.type}</div>
-                          }
+                        {registry[e.type]
+                          ? registry[e.type].component(e as any, '', () => { })
+                          : <div className="p-4 bg-destructive/10 text-destructive rounded border border-destructive/20 text-sm">Unknown element: {e.type}</div>
+                        }
                       </div>
                     ))}
                     <div className="pt-6 mt-4 border-t border-border">

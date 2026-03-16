@@ -2,14 +2,18 @@
 
 import { useDispatch, useSelector } from "react-redux"
 import { editButton, removeField, addField, StoreState } from "../builder-store/store"
-import { registry } from "@/app/registry"
+import { registry, elementsKeys } from "@/app/registry"
 import { useBuilder } from "../form-builder-context/builder-context"
+import { FieldsType, FieldType } from "../builder-types/form-types"
+
+type GhostField = { id: string; type: FieldType; isGhost: true; index: number }
+type DisplayField = FieldsType | GhostField
 import { useState } from "react"
 import { useDroppable, useDndMonitor } from "@dnd-kit/core";
 import { SortableContext, verticalListSortingStrategy, useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export const SortableField = ({ e, id, isEditing }: { e: any, id: string, isEditing: boolean }) => {
+export const SortableField = ({ e, id, isEditing }: { e: FieldsType, id: string, isEditing: boolean }) => {
     const dispatch = useDispatch();
     const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
         id: e.id,
@@ -43,7 +47,7 @@ export const SortableField = ({ e, id, isEditing }: { e: any, id: string, isEdit
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="12" r="1"/><circle cx="9" cy="5" r="1"/><circle cx="9" cy="19" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="5" r="1"/><circle cx="15" cy="19" r="1"/></svg>
             </div>
             <div className="flex-1 pl-4">
-                {registry[e.type] ? registry[e.type].component(e, '', () => { }) : `Unknown element: ${e.type}`}
+                {registry[e.type] ? (registry[e.type] as any).component(e, '', () => { }) : `Unknown element: ${e.type}`}
             </div>
             <div className={`absolute right-2 top-2 flex items-center gap-1 opacity-0 transition-opacity ${isEditing ? 'opacity-100' : 'group-hover:opacity-100'}`}>
                 <button
@@ -61,7 +65,7 @@ export const SortableField = ({ e, id, isEditing }: { e: any, id: string, isEdit
     );
 };
 
-export const GhostDroppable = ({ e, index }: { e: any, index: number }) => {
+export const GhostDroppable = ({ e, index }: { e: FieldsType, index: number }) => {
     const { setNodeRef } = useDroppable({
         id: 'ghost-element',
         data: {
@@ -76,7 +80,7 @@ export const GhostDroppable = ({ e, index }: { e: any, index: number }) => {
             className="group relative flex items-start p-4 -mx-4 rounded-xl bg-primary/5 border-2 border-primary/30 border-dashed opacity-70 transition-all pointer-events-none"
         >
             <div className="flex-1">
-                {registry[e.type] ? registry[e.type].component(e, '', () => { }) : `Unknown`}
+                {registry[e.type] ? (registry[e.type] as any).component(e, '', () => { }) : `Unknown`}
             </div>
         </div>
     );
@@ -96,7 +100,7 @@ export const Renderer = () => {
     });
 
     const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
-    const [activeSidebarElementType, setActiveSidebarElementType] = useState<string | null>(null);
+    const [activeSidebarElementType, setActiveSidebarElementType] = useState<FieldType | null>(null);
 
     const handleDragOver = (over: any) => {
         if (!over?.id || over.id === 'ghost-element') return;
@@ -125,7 +129,7 @@ export const Renderer = () => {
         }
     });
 
-    const displayFields = activeForm ? [...activeForm.fields] : [];
+    const displayFields: DisplayField[] = activeForm ? [...activeForm.fields] : [];
     if (activeSidebarElementType && dragOverIndex !== null && dragOverIndex >= 0 && dragOverIndex <= displayFields.length) {
         displayFields.splice(dragOverIndex, 0, {
             id: 'ghost-element',

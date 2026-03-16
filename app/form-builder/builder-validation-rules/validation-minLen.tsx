@@ -1,4 +1,4 @@
-import { BaseValidationRule, Validation } from "./validation-types";
+import { Validation } from "./validation-types";
 
 export const minLengthRule: Validation = {
   label: 'minimalyno Drujochek length',

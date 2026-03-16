@@ -9,7 +9,7 @@ const previewOptions = [
     { id: 'preview-option-2', label: 'Option 2', value: 'option_2' },
 ]
 
-const getRadioOptions = (options?: RadioGroupField['options']) => (options?.length ?? 0) > 0 ? options : previewOptions
+const getRadioOptions = (options?: RadioGroupField['options']): NonNullable<RadioGroupField['options']> => (options?.length ?? 0) > 0 ? options! : previewOptions
 
 export const RadioGroupElement: FormElement<RadioGroupField> = {
     type: 'radio-group',

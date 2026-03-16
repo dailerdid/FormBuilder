@@ -12,6 +12,7 @@ export const ElementProperties = () => {
     const activeForm = useSelector((state: StoreState) => state.form.forms[id])
     const dispatch = useDispatch()
     const activeField = activeForm?.fields?.find(e => e.id === activeForm.editing)
+    const fieldProps = activeField as Record<string, any> | undefined
 
     return (
         <aside className="w-80 flex-shrink-0 bg-background border-l border-border flex flex-col z-10 transition-colors duration-200">
@@ -42,7 +43,7 @@ export const ElementProperties = () => {
                                                 dispatch(editField({ data: { key: properties.key, value }, formId: id }))
                                             }}
                                             placeholder="Enter text..."
-                                            value={activeField[properties.key] || ""}
+                                            value={fieldProps?.[properties.key as string] || ""}
                                         ></input>
                                     </div>
                                 )
@@ -58,7 +59,7 @@ export const ElementProperties = () => {
                                                 const value = event.target.value === '' ? '' : Number(event.target.value)
                                                 dispatch(editField({ data: { key: properties.key, value }, formId: id }))
                                             }}
-                                            value={activeField[properties.key] ?? ""}
+                                            value={fieldProps?.[properties.key as string] ?? ""}
                                         />
                                     </div>
                                 )
@@ -74,7 +75,7 @@ export const ElementProperties = () => {
                                                     const value = event.target.value
                                                     dispatch(editField({ data: { key: properties.key, value }, formId: id }))
                                                 }}
-                                                value={activeField[properties.key] || ""}
+                                                value={fieldProps?.[properties.key as string] || ""}
                                             >
                                                 {properties.options?.map((i: any) => <option key={i.value} value={i.value}>{i.label}</option>)}
                                             </select>
@@ -96,7 +97,7 @@ export const ElementProperties = () => {
                                                 const value = event.target.checked
                                                 dispatch(editField({ data: { key: properties.key, value }, formId: id }))
                                             }}
-                                            checked={Boolean(activeField[properties.key])}
+                                            checked={Boolean(fieldProps?.[properties.key as string])}
                                         />
                                         {properties.label}
                                         </label>
@@ -110,7 +111,7 @@ export const ElementProperties = () => {
                                         <div className="p-3 border border-border rounded-md bg-muted/30 shadow-sm">
                                             <OptionsCreator 
                                                 key={activeField.id}
-                                                options={activeField[properties.key] || []}
+                                                options={fieldProps?.[properties.key as string] || []}
                                                 onChange={(event) => {
                                                     dispatch(editField({ data: { key: properties.key, value: event }, formId: id }))
                                                 }} 

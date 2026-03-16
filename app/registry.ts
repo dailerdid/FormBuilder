@@ -13,8 +13,8 @@ import { TextElement } from "./form-builder/builder-elements/text-element"
 
 
 
-type elementsType = typeof SelectElement | typeof TextElement | typeof CheckElement | typeof EmailElement | typeof PasswordElement | typeof RangeElement | typeof TelElement | typeof TextareaElement | typeof NumberElement | typeof RadioGroupElement | typeof DateElement | typeof FileElement
-type elementsKeys = elementsType['type']
+export type elementsType = typeof SelectElement | typeof TextElement | typeof CheckElement | typeof EmailElement | typeof PasswordElement | typeof RangeElement | typeof TelElement | typeof TextareaElement | typeof NumberElement | typeof RadioGroupElement | typeof DateElement | typeof FileElement
+export type elementsKeys = elementsType['type']
 
 export const registry: Record<elementsKeys, elementsType> = {
   select: SelectElement,

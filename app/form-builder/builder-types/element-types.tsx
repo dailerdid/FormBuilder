@@ -64,7 +64,7 @@ export type FormElementInputProps = Omit<Partial<UseFormRegisterReturn>, 'onChan
 export const normalizeElementInputProps = (
   inputProps?: FormElementInputProps | unknown,
   onChange?: (value: FormElementValue | FileList | null) => void,
-) : FormElementInputProps => {
+): FormElementInputProps => {
   if (inputProps && typeof inputProps === 'object' && !Array.isArray(inputProps)) {
     return inputProps as FormElementInputProps
   }
