@@ -7,7 +7,8 @@ import { store, addField, reorderFields, insertFieldAtIndex } from "./builder-st
 import { Renderer } from "./builder-renderer/renderer"
 import { BuilderContextProvider } from "./form-builder-context/builder-context"
 import { DndContext, DragEndEvent, DragStartEvent, DragOverlay, Active, useSensor, useSensors, PointerSensor } from "@dnd-kit/core"
-import { registry } from "@/app/registry"
+import { elementsKeys, registry } from "@/app/registry"
+import { FieldsType } from "./builder-types/form-types"
 
 
 export interface BuilderType {
@@ -41,7 +42,7 @@ export const FormBuilder = ({ id }: BuilderType) => {
     }
 
     if (isSidebarElement) {
-      const payload = registry[type as string].construct(Math.random().toString());
+      const payload = registry[type as elementsKeys].construct(Math.random().toString());
 
       const overIndex = over.id === 'ghost-element'
         ? over.data?.current?.index
@@ -74,11 +75,12 @@ export const FormBuilder = ({ id }: BuilderType) => {
             style={{ width: 600 }}
           >
             <div className="flex-1 pointer-events-none w-full">
-              {registry[activeDragItem.data.current?.type as string]?.component(
-                registry[activeDragItem.data.current?.type as string]?.construct('temp'),
-                '',
-                () => { }
-              )}
+              {(() => {
+                const key = activeDragItem.data.current?.type as elementsKeys;
+                const entry = registry[key];
+                if (!entry) return null;
+                return (entry as any).component(entry.construct('temp'), '', () => { });
+              })()}
             </div>
           </div>
         ) : null}
