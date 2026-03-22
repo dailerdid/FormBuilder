@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 
 
 export const minValueRule: Validation = {
-  label: 'minimalyno Drujochek value',
+  label: 'Min Value',
   type: "minValue",
   validate: (value, obj) => Number(value) >= Number(obj.value),
   component: () => {

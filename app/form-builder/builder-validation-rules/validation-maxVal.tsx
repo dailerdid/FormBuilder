@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 
 
 export const maxValueRule: Validation = {
-  label: 'maximalyno Drujochek value',
+  label: 'Max value',
   type: "maxValue",
   validate: (value, obj) => Number(value) <= Number(obj.value),
   component: () => {
