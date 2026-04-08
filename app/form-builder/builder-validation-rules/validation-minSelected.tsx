@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getCollectionLength, getNumberValue } from "./validation-utils";
 
 export const minSelectedRule: Validation = {
-  label: 'minimum selected',
+  label: 'Minimum Selected',
   type: "minSelected",
   validate: (value, obj) => getCollectionLength(value) >= getNumberValue(obj.value),
   component: () => {

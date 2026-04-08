@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getDateTimestamp } from "./validation-utils";
 
 export const dateMaxRule: Validation = {
-  label: 'maximum date',
+  label: 'Maximum Date',
   type: "dateMax",
   validate: (value, obj) => {
     const dateValue = getDateTimestamp(value)

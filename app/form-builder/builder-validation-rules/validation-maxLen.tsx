@@ -1,16 +1,10 @@
 import { Validation } from "./validation-types";
 
 export const maxLengthRule: Validation = {
-  label: 'maximalyno Drujochek length',
+  label: 'Maximum Length',
   type: "maxLength",
   validate: (value, obj) => String(value ?? '').length <= Number(obj.value),
-  component: () => {
-    return (
-      <div>
-        <p>Drujochek max length</p>
-      </div>
-    )
-  },
+  component: () => <span />,
   construct: (obj) => ({
     value: obj.value,
     errorMessage: obj.errorMessage,

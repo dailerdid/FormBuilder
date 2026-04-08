@@ -42,22 +42,15 @@ export default function Data() {
             <div className="max-w-6xl w-full z-10 flex flex-col gap-6">
                 <header className="bg-background p-6 md:p-8 rounded-xl shadow-sm border border-border flex justify-between items-center transition-colors duration-200">
                     <div>
-                        <h1 className="text-2xl font-semibold tracking-tight text-foreground">Form Submissions</h1>
-                        <p className="text-muted-foreground mt-1 text-sm">
-                            Tracking incoming responses for form ID: <span className="font-mono text-xs text-foreground bg-muted px-2 py-1 rounded-md ml-1">{id}</span>
-                        </p>
+                        <h1 className="text-2xl font-semibold tracking-tight text-foreground">{currentForm?.title || "Untitled Form"}</h1>
+                        <p className="text-muted-foreground mt-1 text-sm">{submitedData.length} {submitedData.length === 1 ? 'response' : 'responses'}</p>
                     </div>
                 </header>
 
                 {submitedData.length === 0 ? (
                     <div className="bg-background rounded-xl shadow-sm p-12 text-center border border-border flex flex-col items-center justify-center min-h-[300px] transition-colors duration-200">
-                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted border border-border mb-4 text-muted-foreground">
-                            <svg className="w-8 h-8 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4" />
-                            </svg>
-                        </div>
-                        <h2 className="text-xl font-medium text-foreground mb-1">No data yet</h2>
-                        <p className="text-muted-foreground text-sm">Responses will appear here once users start submitting.</p>
+                        <p className="text-sm font-medium text-foreground">No responses yet</p>
+                        <p className="text-muted-foreground text-sm mt-1">Submissions will appear here.</p>
                     </div>
                 ) : (
                     <div className="bg-background rounded-xl shadow-sm border border-border overflow-hidden transition-all duration-300">

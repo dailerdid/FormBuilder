@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getStringValue } from "./validation-utils";
 
 export const patternRule: Validation = {
-  label: 'pattern match',
+  label: 'Pattern',
   type: "pattern",
   validate: (value, obj) => {
     const rawValue = getStringValue(value).trim()

@@ -159,11 +159,8 @@ export default function Data() {
 
     if (!formsState) {
         return (
-            <div className="min-h-screen bg-muted flex items-center justify-center text-foreground transition-colors duration-200">
-                <div className="text-muted-foreground text-sm flex items-center gap-2">
-                    <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                    Loading form...
-                </div>
+            <div className="min-h-screen bg-muted/30 flex items-center justify-center text-foreground transition-colors duration-200">
+                <p className="text-sm text-muted-foreground">Form not found.</p>
             </div>
         )
     }
@@ -171,59 +168,51 @@ export default function Data() {
     return (
         <div className="min-h-screen bg-muted/30 flex flex-col items-center py-12 px-4 sm:px-6 lg:px-8 relative transition-colors duration-200 overflow-y-auto">
             <div className="absolute inset-0 bg-[radial-gradient(var(--color-border)_1px,transparent_1px)] [background-size:16px_16px] opacity-50 pointer-events-none"></div>
-            
-            <div className={`max-w-2xl w-full z-10 space-y-8 bg-background p-10 rounded-xl shadow-sm border border-border transition-all duration-300 ${isSubmittedSuccessfully ? 'pointer-events-none opacity-60 grayscale-[0.5]' : ''}`}>
-                <div className="border-b border-border pb-6">
+
+            <div className={`max-w-2xl w-full z-10 bg-background rounded-xl shadow-sm border border-border transition-all duration-300 ${isSubmittedSuccessfully ? 'pointer-events-none opacity-60 grayscale-[0.5]' : ''}`}>
+                <div className="px-10 pt-10 pb-6 border-b border-border">
                     <h2 className="text-2xl font-semibold tracking-tight text-foreground">
                         {formsState.title || "Untitled Form"}
                     </h2>
-                    <p className="mt-1 text-sm text-muted-foreground">
-                        Please provide the requested information below.
-                    </p>
                 </div>
 
-                <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+                <form className="px-10 py-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
                     <div className="space-y-6">
                         {formsState.fields.map((e) => {
                             return (
-                                <div
-                                    key={e.id}
-                                    className="relative flex items-start transition-all"
-                                >
-                                    <div className="flex-1 w-full">
-                                        {renderField(e, register, isSubmittedSuccessfully)}
-                                        {errors[getFormFieldKey(e)]?.message && (
-                                            <p className="mt-2 text-xs font-medium text-destructive">
-                                                {String(errors[getFormFieldKey(e)]?.message)}
-                                            </p>
-                                        )}
-                                    </div>
+                                <div key={e.id} className="flex-1 w-full">
+                                    {renderField(e, register, isSubmittedSuccessfully)}
+                                    {errors[getFormFieldKey(e)]?.message && (
+                                        <p className="mt-2 text-xs font-medium text-destructive">
+                                            {String(errors[getFormFieldKey(e)]?.message)}
+                                        </p>
+                                    )}
                                 </div>
                             );
                         })}
                     </div>
 
-                    <div className="pt-6 border-t border-border">
+                    <div className="pt-4 border-t border-border">
                         <button
                             type="submit"
                             disabled={isSubmittedSuccessfully}
-                            className="w-full flex justify-center py-2.5 px-4 rounded-md shadow-sm text-sm font-medium text-primary-foreground bg-primary hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring focus:ring-offset-background transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full flex justify-center py-2.5 px-4 rounded-md text-sm font-medium text-primary-foreground bg-primary hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ring focus:ring-offset-background transition-opacity disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            {isSubmittedSuccessfully ? 'Form successfully submitted' : 'Submit Form'}
+                            Submit
                         </button>
                     </div>
                 </form>
             </div>
 
             {isSubmittedSuccessfully && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
-                    <div className="w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-2xl">
-                        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-100 text-green-600">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+                    <div className="w-full max-w-sm rounded-xl bg-background border border-border p-8 text-center shadow-xl">
+                        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-muted text-foreground mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
                         </div>
-                        <h3 className="mt-4 text-2xl font-bold text-gray-900">Thank you!</h3>
-                        <p className="mt-2 text-sm text-gray-600">
-                            Your form has been submitted successfully. Resubmission is not available.
+                        <h3 className="text-lg font-semibold text-foreground">Submitted</h3>
+                        <p className="mt-1.5 text-sm text-muted-foreground">
+                            Your response has been recorded.
                         </p>
                     </div>
                 </div>

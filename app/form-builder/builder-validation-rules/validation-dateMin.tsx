@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getDateTimestamp } from "./validation-utils";
 
 export const dateMinRule: Validation = {
-  label: 'minimum date',
+  label: 'Minimum Date',
   type: "dateMin",
   validate: (value, obj) => {
     const dateValue = getDateTimestamp(value)

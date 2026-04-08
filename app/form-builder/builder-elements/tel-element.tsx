@@ -38,7 +38,7 @@ export const TelElement: FormElement<TelField> = {
         name: `tel_${id}`,
         label: 'Phone Number',
         validation: [],
-        placeholder: 'Enter phone number...',
+        placeholder: 'Phone number',
         countryCodes: defaultCountryCodes,
         defaultCountryCode: defaultCountryCodes[0].value,
     }),

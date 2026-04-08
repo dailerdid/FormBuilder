@@ -23,7 +23,7 @@ export const NumberElement: FormElement<NumberField> = {
         name: `number_${id}`,
         label: 'Number',
         validation: [],
-        placeholder: 'Enter a number...',
+        placeholder: 'Enter number',
         min: 0,
         max: 100,
         step: 1,

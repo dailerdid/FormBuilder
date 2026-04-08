@@ -28,7 +28,7 @@ export const Dashboard = () => {
             <input
               value={title}
               onChange={onChange}
-              placeholder="New Form Title..."
+              placeholder="Form title"
               className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
               onKeyDown={(e) => {
                 if (e.key === 'Enter' && title) {
@@ -68,7 +68,6 @@ export const Dashboard = () => {
                   <span className={`font-medium truncate text-sm ${isActive ? 'text-foreground' : 'text-muted-foreground'}`}>
                     {value.title || "Untitled Form"}
                   </span>
-                  <span className="text-[10px] text-muted-foreground/70 truncate uppercase tracking-wider mt-0.5">ID: {value.id.slice(0, 8)}...</span>
                 </div>
 
                 <div className="flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -92,8 +91,7 @@ export const Dashboard = () => {
 
           {forms.length === 0 && (
             <div className="flex flex-col items-center justify-center py-12 text-muted-foreground text-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mb-2 opacity-50"><rect width="18" height="18" x="3" y="3" rx="2" /><path d="M3 9h18" /><path d="M9 21V9" /></svg>
-              <p>No forms created yet.</p>
+              <p>No forms yet.</p>
             </div>
           )}
         </div>
@@ -109,7 +107,6 @@ export const Dashboard = () => {
                 <div className="flex justify-between items-start">
                   <div>
                     <h2 className="text-2xl font-semibold tracking-tight text-foreground">{formsState[preview]?.title || "Untitled Form"}</h2>
-                    <p className="text-sm text-muted-foreground mt-1">ID: {preview}</p>
                   </div>
                   <div className="flex gap-2">
                     <Link href={`/builder/${preview}`} className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring border border-border bg-background hover:bg-muted hover:text-foreground h-9 px-4 py-2 shadow-sm gap-2">
@@ -139,16 +136,15 @@ export const Dashboard = () => {
                         }
                       </div>
                     ))}
-                    <div className="pt-6 mt-4 border-t border-border">
-                      <button disabled className="w-full py-2.5 px-4 bg-primary text-primary-foreground rounded-md font-medium text-sm shadow-sm opacity-50">
-                        Submit Form (Preview)
+                    <div className="pt-4 border-t border-border">
+                      <button disabled className="w-full py-2.5 px-4 bg-primary text-primary-foreground rounded-md font-medium text-sm opacity-50">
+                        Submit
                       </button>
                     </div>
                   </div>
                 ) : (
                   <div className="flex-1 flex flex-col gap-4 text-muted-foreground/50 justify-center items-center h-full min-h-[220px]">
-                    <svg className="w-12 h-12 mb-1 opacity-20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /><line x1="8" y1="12" x2="16" y2="12" /><line x1="12" y1="8" x2="12" y2="16" /></svg>
-                    <p className="text-sm">Form is empty. Select 'Edit' to add fields.</p>
+                    <p className="text-sm text-muted-foreground">No fields added.</p>
                   </div>
                 )}
               </div>
@@ -156,11 +152,7 @@ export const Dashboard = () => {
           </div>
         ) : (
           <div className="flex-1 flex flex-col items-center justify-center text-muted-foreground z-10">
-            <div className="w-16 h-16 rounded-full bg-background border border-border flex items-center justify-center shadow-sm mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-muted-foreground"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><line x1="10" y1="9" x2="8" y2="9" /></svg>
-            </div>
-            <h3 className="text-lg font-medium text-foreground tracking-tight">No Form Selected</h3>
-            <p className="text-sm mt-1">Create a new form or select one from the sidebar.</p>
+            <p className="text-sm">Select a form to preview it.</p>
           </div>
         )}
       </main>

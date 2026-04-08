@@ -15,7 +15,7 @@ const getResolvedRangeValue = (value: FormElementInputProps['value'], defaultVal
     ) ?? defaultValue
 }
 
-const getRangeBackground = (progress: number) => `linear-gradient(to right, #22c55e 0%, #22c55e ${progress}%, #ef4444 ${progress}%, #ef4444 100%)`
+const getRangeBackground = (progress: number) => `linear-gradient(to right, var(--primary) 0%, var(--primary) ${progress}%, var(--border) ${progress}%, var(--border) 100%)`
 
 const getRangeProgress = (value: number, min: number, max: number) => {
     const rangeSpan = Math.max(max - min, 1)
@@ -23,7 +23,7 @@ const getRangeProgress = (value: number, min: number, max: number) => {
 }
 
 const RangeValueBadge = ({ value }: { value: number }) => (
-    <span className="text-xs font-medium px-2 py-1 rounded-full bg-muted text-muted-foreground">
+    <span className="text-xs font-medium px-2 py-1 rounded-md bg-muted text-muted-foreground tabular-nums">
         {value}
     </span>
 )

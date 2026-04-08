@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getCollectionLength, getNumberValue } from "./validation-utils";
 
 export const fileCountMaxRule: Validation = {
-  label: 'file count max',
+  label: 'Max File Count',
   type: "fileCountMax",
   validate: (value, obj) => getCollectionLength(value) <= getNumberValue(obj.value),
   component: () => {

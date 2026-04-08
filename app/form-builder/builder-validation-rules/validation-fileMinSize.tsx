@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getFiles, getNumberValue } from "./validation-utils";
 
 export const fileMinSizeRule: Validation = {
-  label: 'file min size',
+  label: 'Min File Size',
   type: "fileMinSize",
   validate: (value, obj) => {
     const minSize = getNumberValue(obj.value)

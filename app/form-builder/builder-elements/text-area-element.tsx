@@ -15,7 +15,7 @@ export const TextareaElement: FormElement<TextareaField> = {
         name: `textarea_${id}`,
         label: 'Textarea',
         validation: [],
-        placeholder: 'Write something...',
+        placeholder: 'Enter text',
         rows: 4,
     }),
 

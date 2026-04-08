@@ -109,7 +109,7 @@ export const ValidationProperties = ({ activeField }: { activeField: BaseField }
                   reset();
                 }}
               >
-                  <option value="" disabled>Add rule...</option>
+                  <option value="" disabled>Add a rule</option>
                   {registry[activeField.type].validation.map((rules: any) => {
                   return (
                       <option key={rules.type} value={rules.type}>{rules.label}</option>
@@ -135,7 +135,7 @@ export const ValidationProperties = ({ activeField }: { activeField: BaseField }
                     <label className="text-xs font-medium text-foreground uppercase tracking-wider">{e.label}</label>
                         <input 
                             {...register(e.key, { required: true })} 
-                      placeholder={`Enter ${e.label.toLowerCase()}...`} 
+                      placeholder={e.label}
                             type={e.type}
                             className="flex h-8 w-full rounded-md border border-input bg-background px-3 py-1 text-xs shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
                         />
@@ -145,7 +145,7 @@ export const ValidationProperties = ({ activeField }: { activeField: BaseField }
                 return null
                 })}
                 <button type="submit" className="w-full inline-flex items-center justify-center rounded-md text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-primary text-primary-foreground hover:opacity-90 h-8 shadow-sm">
-                    Add Validation
+                    Add Rule
                 </button>
             </form>
           )}

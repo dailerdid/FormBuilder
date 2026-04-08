@@ -1,7 +1,7 @@
 import { Validation } from "./validation-types";
 
 export const integerOnlyRule: Validation = {
-  label: 'integer only',
+  label: 'Integer Only',
   type: "integerOnly",
   validate: (value) => {
     const numericValue = Number(value)

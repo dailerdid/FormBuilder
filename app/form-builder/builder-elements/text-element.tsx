@@ -17,7 +17,7 @@ export const TextElement: FormElement<TextField> = {
         name: `text_${id}`,
         label: 'Text Field',
         validation: [],
-        placeholder: 'Type something...'
+        placeholder: 'Enter text'
     }),
 
     component: (field, inputProps, onChange) => {

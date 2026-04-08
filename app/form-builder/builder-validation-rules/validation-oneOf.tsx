@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getDelimitedValues, getStringValue } from "./validation-utils";
 
 export const oneOfRule: Validation = {
-  label: 'one of values',
+  label: 'One Of',
   type: "oneOf",
   validate: (value, obj) => {
     const allowedValues = getDelimitedValues(obj.value)

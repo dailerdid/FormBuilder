@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getFiles, getNumberValue } from "./validation-utils";
 
 export const fileMaxSizeRule: Validation = {
-  label: 'file max size',
+  label: 'Max File Size',
   type: "fileMaxSize",
   validate: (value, obj) => {
     const maxSize = getNumberValue(obj.value)

@@ -1,7 +1,7 @@
 import { Validation } from "./validation-types";
 
 export const positiveOnlyRule: Validation = {
-  label: 'positive only',
+  label: 'Positive Only',
   type: "positiveOnly",
   validate: (value) => Number(value) > 0,
   component: () => {

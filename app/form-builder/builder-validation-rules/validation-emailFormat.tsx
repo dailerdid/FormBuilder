@@ -4,7 +4,7 @@ import { getStringValue } from "./validation-utils";
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export const emailFormatRule: Validation = {
-  label: 'email format',
+  label: 'Email Format',
   type: "emailFormat",
   validate: (value) => {
     const rawValue = getStringValue(value).trim()

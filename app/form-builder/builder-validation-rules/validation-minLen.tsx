@@ -1,16 +1,10 @@
 import { Validation } from "./validation-types";
 
 export const minLengthRule: Validation = {
-  label: 'minimalyno Drujochek length',
+  label: 'Minimum Length',
   type: "minLength",
   validate: (value, obj) => String(value ?? '').length >= Number(obj.value),
-  component: () => {
-    return (
-      <div>
-        <p>Drujochek min length</p>
-      </div>
-    )
-  },
+  component: () => <span />,
   construct: (obj) => ({
     value: obj.value,
     errorMessage: obj.errorMessage,

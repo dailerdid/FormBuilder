@@ -127,7 +127,7 @@ body {
 .range-slider::-moz-range-progress {
   height: 0.5rem;
   border-radius: 9999px;
-  background: #22c55e;
+  background: var(--primary);
 }
 
 .range-slider::-moz-range-thumb {

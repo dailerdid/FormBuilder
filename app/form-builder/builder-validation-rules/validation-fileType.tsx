@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getDelimitedValues, getFiles, matchesAllowedFileType } from "./validation-utils";
 
 export const fileTypeRule: Validation = {
-  label: 'file type',
+  label: 'File Type',
   type: "fileType",
   validate: (value, obj) => {
     const allowedTypes = getDelimitedValues(obj.value)

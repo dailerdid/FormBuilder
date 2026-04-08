@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getStringValue } from "./validation-utils";
 
 export const notEqualRule: Validation = {
-  label: 'not equal',
+  label: 'Not Equal',
   type: "notEqual",
   validate: (value, obj) => getStringValue(value) !== getStringValue(obj.value),
   component: () => {

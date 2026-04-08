@@ -1,7 +1,7 @@
 import { Validation } from "./validation-types";
 
 export const mustBeTrueRule: Validation = {
-  label: 'must be true',
+  label: 'Must Be True',
   type: "mustBeTrue",
   validate: (value) => value === true,
   component: () => {

@@ -38,7 +38,7 @@ export const FileElement: FormElement<FileField> = {
                 {fileList.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                         {fileList.map((file) => (
-                            <span key={`${file.name}-${file.size}`} className="rounded-full bg-muted px-2 py-1 text-xs text-muted-foreground">
+                            <span key={`${file.name}-${file.size}`} className="rounded-md bg-muted px-2 py-1 text-xs text-muted-foreground">
                                 {file.name}
                             </span>
                         ))}

@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getCollectionLength, getNumberValue } from "./validation-utils";
 
 export const maxSelectedRule: Validation = {
-  label: 'maximum selected',
+  label: 'Maximum Selected',
   type: "maxSelected",
   validate: (value, obj) => getCollectionLength(value) <= getNumberValue(obj.value),
   component: () => {

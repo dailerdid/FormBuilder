@@ -16,7 +16,7 @@ export const EmailElement: FormElement<EmailField> = {
         name: `email_${id}`,
         label: 'Email Address',
         validation: [],
-        placeholder: 'Entering email...'
+        placeholder: 'Email address'
     }),
 
     component: (field, inputProps, onChange) => {

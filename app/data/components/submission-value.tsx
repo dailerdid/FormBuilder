@@ -34,7 +34,7 @@ const downloadFile = (file: SubmittedFile) => {
     link.click()
 }
 
-const EmptyValue = () => <span className="opacity-40 italic">-</span>
+const EmptyValue = () => <span className="text-muted-foreground/40">—</span>
 
 const FileSubmissionValue = ({ files }: { files: SubmittedFile[] }) => (
     files.length > 0 ? (

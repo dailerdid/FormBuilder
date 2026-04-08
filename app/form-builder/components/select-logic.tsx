@@ -46,7 +46,7 @@ const getOptionsContainerClassName = (isOpen: boolean) => [
 ].join(' ')
 
 const getOptionClassName = (isSelected: boolean) => [
-    'flex w-full items-center rounded-sm px-3 py-2 text-left text-sm transition-colors',
+    'flex w-full items-center rounded-md px-3 py-2 text-left text-sm transition-colors',
     isSelected ? 'bg-muted text-foreground' : 'text-foreground hover:bg-muted/70'
 ].join(' ')
 

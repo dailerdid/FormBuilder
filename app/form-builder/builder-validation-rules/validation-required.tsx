@@ -1,7 +1,7 @@
 import { Validation } from "./validation-types";
 
 export const requiredRule: Validation = {
-  label: 'required field',
+  label: 'Required',
   type: "required",
   validate: (value) => {
     if (typeof FileList !== 'undefined' && value instanceof FileList) {

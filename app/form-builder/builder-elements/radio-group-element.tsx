@@ -40,7 +40,7 @@ export const RadioGroupElement: FormElement<RadioGroupField> = {
                                 type="radio"
                                 value={option.value}
                                 checked={selectedValue !== undefined ? selectedValue === option.value : undefined}
-                                className="h-4 w-4 border border-input text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                                className="h-4 w-4 shrink-0 border border-input ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 accent-primary"
                             />
                             <span>{option.label}</span>
                         </label>

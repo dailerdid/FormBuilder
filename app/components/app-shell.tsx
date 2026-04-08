@@ -12,7 +12,7 @@ export const AppShell = ({ children }: { children: React.ReactNode }) => {
         return <div className="min-h-screen bg-background text-foreground transition-colors duration-200">{children}</div>
     }
 
-    const title = pathname?.startsWith('/builder') ? 'Form Builder Editor' : pathname?.startsWith('/data') ? 'Submissions' : 'Dashboard'
+    const title = pathname?.startsWith('/builder') ? 'Builder' : pathname?.startsWith('/data') ? 'Submissions' : 'Dashboard'
 
     return (
         <div className="flex flex-col h-screen overflow-hidden bg-background text-foreground transition-colors duration-200">

@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getDateTimestamp } from "./validation-utils";
 
 export const dateRangeRule: Validation = {
-  label: 'date range',
+  label: 'Date Range',
   type: "dateRange",
   validate: (value, obj) => {
     const dateValue = getDateTimestamp(value)

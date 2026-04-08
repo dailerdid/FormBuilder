@@ -4,7 +4,7 @@ import { getStringValue } from "./validation-utils";
 const phoneRegex = /^\+?[\d\s().-]{6,20}$/
 
 export const phoneFormatRule: Validation = {
-  label: 'phone format',
+  label: 'Phone Format',
   type: "phoneFormat",
   validate: (value) => {
     const rawValue = getStringValue(value).trim()

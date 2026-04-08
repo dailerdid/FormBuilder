@@ -23,9 +23,8 @@ export const ElementProperties = () => {
 
             <div className="p-4 flex-1 overflow-y-auto w-full flex flex-col gap-6">
                 {!activeField && (
-                    <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground space-y-3 min-h-[200px] opacity-70">
-                        <svg className="w-12 h-12 mb-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}><circle cx="12" cy="12" r="10" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 16v-4" /><path strokeLinecap="round" strokeLinejoin="round" d="M12 8h.01" /></svg>
-                        <p className="text-sm">Select an element on the canvas<br />to edit its properties</p>
+                    <div className="flex flex-col items-center justify-center h-full text-center text-muted-foreground min-h-[200px]">
+                        <p className="text-sm">Select a field to edit its properties.</p>
                     </div>
                 )}
 
@@ -42,7 +41,7 @@ export const ElementProperties = () => {
                                                 const value = event.target.value
                                                 dispatch(editField({ data: { key: properties.key, value }, formId: id }))
                                             }}
-                                            placeholder="Enter text..."
+                                            placeholder="Enter value"
                                             value={fieldProps?.[properties.key as string] || ""}
                                         ></input>
                                     </div>

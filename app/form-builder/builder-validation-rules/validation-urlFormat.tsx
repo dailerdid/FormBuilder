@@ -2,7 +2,7 @@ import { Validation } from "./validation-types";
 import { getStringValue } from "./validation-utils";
 
 export const urlFormatRule: Validation = {
-  label: 'url format',
+  label: 'URL Format',
   type: "urlFormat",
   validate: (value) => {
     const rawValue = getStringValue(value).trim()
