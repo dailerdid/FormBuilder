@@ -33,6 +33,7 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+Or https://dailer-builder.vercel.app/
 
 ## Project Structure
 
